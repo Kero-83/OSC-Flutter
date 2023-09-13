@@ -11,6 +11,7 @@ class ArchivedPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Archived Tasks"),
       ),
+      // ignore: prefer_const_literals_to_create_immutables
       body: ListView(children: []),
     );
   }

@@ -10,6 +10,8 @@ void main() => runApp(SimpleToDoList());
 List <Task>? Tasks, DoneTasks, ArchivedTmdkasks;
 
 class SimpleToDoList extends StatelessWidget {
+  const SimpleToDoList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

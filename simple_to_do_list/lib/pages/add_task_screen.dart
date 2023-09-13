@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_to_do_list/cubit/add_screen_cubit.dart';
-import 'package:simple_to_do_list/main.dart';
-import 'package:simple_to_do_list/task.dart';
 
 // class AddTaskScreen extends StatefulWidget {
 //   @override

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,7 @@ class Task extends StatelessWidget {
   late DateTime dateTime;
   late TimeOfDay timeOfDay;
 
-  Task(this.task, this.dateTime, this.timeOfDay);
+  Task(this.task, this.dateTime, this.timeOfDay, {super.key});
   @override
   Widget build(BuildContext context) {
     return Row(
