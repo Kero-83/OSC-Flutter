@@ -1,0 +1,26 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:flutter/material.dart';
+import 'package:simple_to_do_list/pages/add_task_screen.dart';
+
+class TasksPage extends StatelessWidget {
+  const TasksPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("New Tasks"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddTaskScreen()),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
