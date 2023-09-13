@@ -61,7 +61,7 @@ class AddTaskScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Task'),
+        title: const Text('Add Task'),
       ),
       body: Column(
         children: [
@@ -77,7 +77,7 @@ class AddTaskScreen extends StatelessWidget {
               taskCubit.addTask();
               Navigator.pop(context);
             },
-            child: Text('Add Task'),
+            child: const Text('Add Task'),
           ),
         ],
       ),
