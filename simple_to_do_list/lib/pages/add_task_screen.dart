@@ -57,11 +57,7 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final taskCubit = BlocProvider.of<AddTaskScreenCubit>(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Add Task'),
-      ),
-      body: Column(
+    return Column(
         children: [
           TextField(
             onChanged: (value) {
@@ -69,6 +65,7 @@ class AddTaskScreen extends StatelessWidget {
               taskCubit.addTask(value);
             },
           ),
+          
           ElevatedButton(
             onPressed: () {
               // Add the task using the Cubit
@@ -78,7 +75,6 @@ class AddTaskScreen extends StatelessWidget {
             child: const Text('Add Task'),
           ),
         ],
-      ),
-    );
+      );
   }
 }

@@ -14,10 +14,9 @@ class TasksPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AddTaskScreen()),
-          );
+          showBottomSheet(
+              context: context,
+              builder: (BuildContext context) => AddTaskScreen());
         },
         child: Icon(Icons.add),
       ),

@@ -7,7 +7,7 @@ import 'package:simple_to_do_list/pages/tasks_page.dart';
 import 'package:simple_to_do_list/task.dart';
 void main() => runApp(SimpleToDoList());
 
-List <Task>? Tasks, DoneTasks, ArchivedTmdkasks;
+List <Task>? Tasks, DoneTasks, ArchivedTasks;
 
 class SimpleToDoList extends StatelessWidget {
   const SimpleToDoList({super.key});
