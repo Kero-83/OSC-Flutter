@@ -15,6 +15,8 @@ class TasksPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showBottomSheet(
+            elevation: 787,
+            backgroundColor: Colors.white70,
               context: context,
               builder: (BuildContext context) => AddTaskScreen());
         },

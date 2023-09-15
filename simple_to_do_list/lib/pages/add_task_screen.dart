@@ -55,26 +55,32 @@ class AddTaskScreen extends StatelessWidget {
 
 @override
   Widget build(BuildContext context) {
-    final taskCubit = BlocProvider.of<AddTaskScreenCubit>(context);
+    // final taskCubit = BlocProvider.of<AddTaskScreenCubit>(context);
 
-    return Column(
-        children: [
-          TextField(
-            onChanged: (value) {
-              // Update the task name in the Cubit
-              taskCubit.addTask(value);
-            },
-          ),
-          
-          ElevatedButton(
-            onPressed: () {
-              // Add the task using the Cubit
-              taskCubit.addTask();
-              Navigator.pop(context);
-            },
-            child: const Text('Add Task'),
-          ),
-        ],
-      );
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white70,
+      ),
+      child: Column(
+          children: [
+            TextField(
+              onChanged: (value) {
+                // Update the task name in the Cubit
+                // taskCubit.addTask(value);
+              },
+            ),
+            
+            ElevatedButton(
+              onPressed: () {
+                // Add the task using the Cubit
+                // taskCubit.addTask();
+                Navigator.pop(context);
+              },
+              child: const Text('Add Task'),
+            ),
+          ],
+        ),
+    );
   }
 }
