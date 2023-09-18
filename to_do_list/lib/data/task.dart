@@ -7,8 +7,8 @@ class Task extends StatelessWidget {
   late String task;
   late DateTime dateTime;
   late TimeOfDay timeOfDay;
-
-  Task(this.task, this.dateTime, this.timeOfDay, {super.key});
+  bool isDone;
+  Task(this.task, this.dateTime, this.timeOfDay, {this.isDone = false, super.key});
   @override
   Widget build(BuildContext context) {
     return Row(

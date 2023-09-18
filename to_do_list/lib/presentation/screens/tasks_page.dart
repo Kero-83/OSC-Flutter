@@ -1,16 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TasksPage extends StatelessWidget {
+import 'package:to_do_list/business_logic/cubit/task_cubit.dart';
+import 'package:to_do_list/main.dart';
+import 'package:to_do_list/presentation/screens/add_task_page.dart';
+
+class TasksPage extends StatefulWidget {
   const TasksPage({super.key});
 
   @override
+  State<TasksPage> createState() => _TasksPageState();
+}
+
+class _TasksPageState extends State<TasksPage> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Archived Tasks"),
-      ),
-      // ignore: prefer_const_literals_to_create_immutables
-      body: ListView(children: []),
+    return BlocConsumer<TaskCubit, MyState>(
+      listener: (context, state) {
+        
+      },
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Center(child: Text("Tasks")),
+          ),
+          // ignore: prefer_const_literals_to_create_immutables
+          body: ListView(children: (Tasks.isEmpty) ? [] : Tasks),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                  (context),
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => AddTaskPage()));
+            },
+            child: const Icon(Icons.add),
+          ),
+        );
+      },
     );
   }
 }

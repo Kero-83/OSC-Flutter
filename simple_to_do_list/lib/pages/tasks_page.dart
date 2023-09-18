@@ -9,9 +9,9 @@ class TasksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("New Tasks"),
-      ),
+      // appBar: AppBar(
+      //   title: Text("New Tasks"),
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showBottomSheet(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list/main.dart';
 
 class ArchivedPage extends StatelessWidget {
   const ArchivedPage({super.key});
@@ -7,10 +8,10 @@ class ArchivedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Archived Tasks"),
+        title: const Center(child: Text("Archived Tasks")),
       ),
       // ignore: prefer_const_literals_to_create_immutables
-      body: ListView(children: []),
+      body: ListView(children:(ArchivedTasks.isEmpty) ? [] : ArchivedTasks),
     );
   }
 }

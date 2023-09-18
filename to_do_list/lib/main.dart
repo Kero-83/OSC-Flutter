@@ -1,22 +1,27 @@
-// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors, prefer_const_constructors_in_immutables, prefer_final_fields
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:to_do_list/business_logic/cubit/task_cubit.dart';
 import 'package:to_do_list/data/task.dart';
 import 'package:to_do_list/presentation/screens/archived_page.dart';
 import 'package:to_do_list/presentation/screens/done_page.dart';
 import 'package:to_do_list/presentation/screens/tasks_page.dart';
+
 void main() => runApp(SimpleToDoList());
 
-List <Task>? Tasks, DoneTasks, ArchivedTasks;
+List<Task> Tasks = [], DoneTasks = [], ArchivedTasks = [];
 
 class SimpleToDoList extends StatelessWidget {
-  const SimpleToDoList({super.key});
-
+  SimpleToDoList({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNavigationBarExample(),
+      home: BlocProvider(
+        create: (context) => TaskCubit(),
+        child: BottomNavigationBarExample(),
+      ),
     );
   }
 }
@@ -32,7 +37,7 @@ class BottomNavigationBarExample extends StatefulWidget {
 class _BottomNavigationBarExampleState
     extends State<BottomNavigationBarExample> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     TasksPage(),
     DonePage(),
     ArchivedPage(),
