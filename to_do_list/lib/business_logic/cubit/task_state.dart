@@ -3,8 +3,8 @@ part of 'task_cubit.dart';
 abstract class MyState {}
 
 abstract class TaskState extends MyState {
-  final Task _task;
-  TaskState(this._task) : super();
+  final Task task;
+  TaskState(this.task) : super();
 }
 
 final class TaskInitial extends TaskState {
