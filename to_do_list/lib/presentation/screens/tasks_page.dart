@@ -17,7 +17,9 @@ class _TasksPageState extends State<TasksPage> {
   Widget build(BuildContext context) {
     return BlocConsumer<TaskCubit, MyState>(
       listener: (context, state) {
-        
+        if(state is TaskStateAdd) {
+          
+        }
       },
       builder: (context, state) {
         return Scaffold(

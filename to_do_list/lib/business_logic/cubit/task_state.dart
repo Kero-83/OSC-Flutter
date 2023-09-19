@@ -1,6 +1,8 @@
 part of 'task_cubit.dart';
 
-abstract class MyState {}
+abstract class MyState {
+  MyState() : super();
+}
 
 abstract class TaskState extends MyState {
   final Task task;
