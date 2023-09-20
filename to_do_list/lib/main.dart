@@ -16,11 +16,11 @@ class SimpleToDoList extends StatelessWidget {
   SimpleToDoList({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => TaskCubit(),
-        child: BottomNavigationBarExample(),
+    return BlocProvider(
+      create: (context) => TaskCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: BottomNavigationBarExample(),
       ),
     );
   }

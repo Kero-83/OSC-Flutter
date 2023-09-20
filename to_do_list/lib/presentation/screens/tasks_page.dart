@@ -15,31 +15,40 @@ class TasksPage extends StatefulWidget {
 class _TasksPageState extends State<TasksPage> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<TaskCubit, MyState>(
+    return BlocListener<TaskCubit, MyState>(
       listener: (context, state) {
-        if (state is TaskStateAdd) {}
+        // if (state is TaskStateAdd) {
+        //   Tasks.add(state.task);
+        // }
+        if (state is TaskStateArchieve) {}
       },
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Center(child: Text("Tasks")),
-          ),
-          // ignore: prefer_const_literals_to_create_immutables
-          body: ListView(children: (Tasks.isEmpty) ? [] : Tasks),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Navigator.push(
-                  (context),
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => BlocProvider(
-                            create: (context) => TaskCubit(),
-                            child: AddTaskPage(),
-                          )));
-            },
-            child: const Icon(Icons.add),
-          ),
-        );
-      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Center(child: Text("Tasks")),
+        ),
+        // ignore: prefer_const_literals_to_create_immutables
+        body: BlocConsumer<TaskCubit, MyState>(
+          listener: (context, state) {
+            if (state is TaskStateAdd) {
+              Tasks.add(state.task);
+            }
+          },
+          builder: (context, state) {
+            return ListView(children: (Tasks.isEmpty) ? [] : Tasks);
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              (context),
+              MaterialPageRoute(
+                builder: (BuildContext context) => AddTaskPage(),
+              ),
+            );
+          },
+          child: const Icon(Icons.add),
+        ),
+      ),
     );
   }
 }

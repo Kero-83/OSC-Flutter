@@ -9,7 +9,6 @@ part 'task_state.dart';
 class TaskCubit extends Cubit<MyState> {
   TaskCubit() : super(TaskInitial());
   void addTask(Task task) {
-    Tasks.add(task);
     emit(TaskStateAdd(task));
   }
 

@@ -8,38 +8,27 @@ import 'package:to_do_list/main.dart';
 final dateNow = DateTime.now();
 final timeNow = TimeOfDay.now();
 
-class AddTaskPage extends StatefulWidget {
-  @override
-  State<AddTaskPage> createState() => _AddTaskPageState();
-}
-
-class _AddTaskPageState extends State<AddTaskPage> {
-  late String finaltaskName;
-
-  late TimeOfDay finalTimeOfDay, selectedTime = timeNow;
-
-  late DateTime finalDateTime, selectedDate = dateNow;
-
-  late String date;
-
-  late String time;
-
-  String taskName = "Task ${Tasks.length}";
-
+class AddTaskPage extends StatelessWidget {
+  TimeOfDay selectedTime = timeNow;
+  DateTime selectedDate = dateNow;
+  final int tasksNum = Tasks.length;
+  late final String finalTaskName;
+  late String date, time, taskName = "Task ${tasksNum + 1}";
   @override
   Widget build(BuildContext context) {
     date = "${selectedDate.year} - ${selectedDate.month} - ${selectedDate.day}";
     time = selectedTime.format(context);
     return BlocListener<TaskCubit, MyState>(
       listener: (context, state) {
-        if(state is TimePickersState) {
+        if (state is TimePickersState) {
           time = state.timeOfDay.format(context);
+        } else if (state is DatePickersState) {
+          date =
+              "${state.dateTime.year} - ${state.dateTime.month} - ${state.dateTime.day}";
         }
-        else if(state is DatePickersState) {
-          date = "${state.dateTime.year} - ${state.dateTime.month} - ${state.dateTime.day}";
-        }
-        else if(state is TaskStateAdd) {
-          Navigator.pop(context);
+        if (state is TaskStateAdd) {
+          
+          Navigator.of(context).pop();
         }
       },
       child: Scaffold(
@@ -52,9 +41,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
               decoration: InputDecoration(
                 labelText: 'Task Name',
               ),
-              onChanged: (value) {
-                taskName = value;
-              },
+              onChanged: (value) =>
+                taskName,
             ),
             Container(
               alignment: Alignment.center,
@@ -94,9 +82,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         firstDate: DateTime(2000),
                         lastDate: DateTime(2100),
                       ).then((value) {
-                        if(value != null) {
-                            (context).read<TaskCubit>().datePickersChange(value);
-                          }
+                        if (value != null) {
+                          (context).read<TaskCubit>().datePickersChange(value);
+                        }
                       });
                     },
                     child: Text(
@@ -147,8 +135,10 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         initialTime: selectedTime,
                       ).then(
                         (value) {
-                          if(value != null) {
-                            (context).read<TaskCubit>().timePickersChange(value);
+                          if (value != null) {
+                            (context)
+                                .read<TaskCubit>()
+                                .timePickersChange(value);
                           }
                         },
                       );
@@ -165,9 +155,11 @@ class _AddTaskPageState extends State<AddTaskPage> {
               ),
             ),
             ElevatedButton(
-              onPressed: () => context
-              .read<TaskCubit>()
-              .addTask(Task(taskName, selectedDate, selectedTime)),
+              onPressed: () {
+                finalTaskName = taskName;
+                context
+                  .read<TaskCubit>()
+                  .addTask(Task(finalTaskName, selectedDate, selectedTime));},
               child: Text('Add Task'),
             ),
           ],
