@@ -17,9 +17,7 @@ class _TasksPageState extends State<TasksPage> {
   Widget build(BuildContext context) {
     return BlocConsumer<TaskCubit, MyState>(
       listener: (context, state) {
-        if(state is TaskStateAdd) {
-          
-        }
+        if (state is TaskStateAdd) {}
       },
       builder: (context, state) {
         return Scaffold(
@@ -33,7 +31,10 @@ class _TasksPageState extends State<TasksPage> {
               Navigator.push(
                   (context),
                   MaterialPageRoute(
-                      builder: (BuildContext context) => AddTaskPage()));
+                      builder: (BuildContext context) => BlocProvider(
+                            create: (context) => TaskCubit(),
+                            child: AddTaskPage(),
+                          )));
             },
             child: const Icon(Icons.add),
           ),

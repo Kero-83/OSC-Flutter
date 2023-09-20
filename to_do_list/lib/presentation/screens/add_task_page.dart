@@ -8,7 +8,12 @@ import 'package:to_do_list/main.dart';
 final dateNow = DateTime.now();
 final timeNow = TimeOfDay.now();
 
-class AddTaskPage extends StatelessWidget {
+class AddTaskPage extends StatefulWidget {
+  @override
+  State<AddTaskPage> createState() => _AddTaskPageState();
+}
+
+class _AddTaskPageState extends State<AddTaskPage> {
   late String finaltaskName;
 
   late TimeOfDay finalTimeOfDay, selectedTime = timeNow;
@@ -25,8 +30,18 @@ class AddTaskPage extends StatelessWidget {
   Widget build(BuildContext context) {
     date = "${selectedDate.year} - ${selectedDate.month} - ${selectedDate.day}";
     time = selectedTime.format(context);
-    return BlocProvider(
-      create: (context) => TaskCubit(),
+    return BlocListener<TaskCubit, MyState>(
+      listener: (context, state) {
+        if(state is TimePickersState) {
+          time = state.timeOfDay.format(context);
+        }
+        else if(state is DatePickersState) {
+          date = "${state.dateTime.year} - ${state.dateTime.month} - ${state.dateTime.day}";
+        }
+        else if(state is TaskStateAdd) {
+          Navigator.pop(context);
+        }
+      },
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Add Task'),
@@ -72,19 +87,17 @@ class AddTaskPage extends StatelessWidget {
                     ],
                   ),
                   GestureDetector(
-                    onTap: () async {
-                      final DateTime? dateTime = await showDatePicker(
+                    onTap: () {
+                      showDatePicker(
                         context: context,
                         initialDate: selectedDate,
                         firstDate: DateTime(2000),
                         lastDate: DateTime(2100),
-                      );
-                      // setState(() {
-                      //   selectedDate = dateTime!;
-                      // });
-                      if(dateTime != null) {
-                        (context).read<TaskCubit>().datePickersChange(dateTime);
-                      }
+                      ).then((value) {
+                        if(value != null) {
+                            (context).read<TaskCubit>().datePickersChange(value);
+                          }
+                      });
                     },
                     child: Text(
                       "Change ",
@@ -128,17 +141,17 @@ class AddTaskPage extends StatelessWidget {
                     ],
                   ),
                   GestureDetector(
-                    onTap: () async {
-                      final TimeOfDay? timeOfDay = await showTimePicker(
+                    onTap: () {
+                      showTimePicker(
                         context: context,
                         initialTime: selectedTime,
+                      ).then(
+                        (value) {
+                          if(value != null) {
+                            (context).read<TaskCubit>().timePickersChange(value);
+                          }
+                        },
                       );
-                      // setState(() {
-                      //   selectedTime = timeOfDay!;
-                      // });
-                      if (timeOfDay != null) {
-                        BlocProvider(create: (context) => TaskCubit());
-                      }
                     },
                     child: Text(
                       "Change ",
@@ -152,10 +165,9 @@ class AddTaskPage extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
-              // => context
-              // .read<TaskCubit>()
-              // .addTask(Task(finaltaskName, finalDateTime, finalTimeOfDay)),
+              onPressed: () => context
+              .read<TaskCubit>()
+              .addTask(Task(taskName, selectedDate, selectedTime)),
               child: Text('Add Task'),
             ),
           ],
