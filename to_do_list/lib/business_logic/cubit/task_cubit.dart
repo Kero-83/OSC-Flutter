@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_list/data/task.dart';
-import 'package:to_do_list/main.dart';
 import 'package:to_do_list/presentation/screens/add_task_page.dart';
 
 part 'task_state.dart';
@@ -13,15 +12,10 @@ class TaskCubit extends Cubit<MyState> {
   }
 
   void archieveTask(Task task) {
-    ArchivedTasks.add(task);
-    if (DoneTasks.contains(task)) {
-      DoneTasks.remove(task);
-    }
     emit(TaskStateArchieve(task));
   }
 
   void doneTask(Task task) {
-    DoneTasks.add(task);
     emit(TaskStateDone(task));
   }
 

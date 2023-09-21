@@ -42,7 +42,7 @@ class AddTaskPage extends StatelessWidget {
                 labelText: 'Task Name',
               ),
               onChanged: (value) =>
-                taskName,
+                taskName = value,
             ),
             Container(
               alignment: Alignment.center,
@@ -83,7 +83,8 @@ class AddTaskPage extends StatelessWidget {
                         lastDate: DateTime(2100),
                       ).then((value) {
                         if (value != null) {
-                          (context).read<TaskCubit>().datePickersChange(value);
+                          selectedDate = value;
+                          context.read<TaskCubit>().datePickersChange(value);
                         }
                       });
                     },
@@ -136,6 +137,7 @@ class AddTaskPage extends StatelessWidget {
                       ).then(
                         (value) {
                           if (value != null) {
+                            selectedTime = value;
                             (context)
                                 .read<TaskCubit>()
                                 .timePickersChange(value);
