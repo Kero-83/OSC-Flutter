@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -32,9 +35,9 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.black,
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(3.5, 0, 0, 0),
-                  height: 20,
-                  width: 20,
+                  margin: EdgeInsets.fromLTRB(3.5.sp, 0, 0, 0),
+                  height: 20.sp,
+                  width: 20.sp,
                   decoration: BoxDecoration(
                     color: Colors.black,
                     shape: BoxShape.circle,
@@ -46,7 +49,9 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       backgroundColor: Colors.white,
-      body: Column(children: <Widget>[]),
+      body: ListView(
+        children: <Widget>[],
+      ),
     );
   }
 }
