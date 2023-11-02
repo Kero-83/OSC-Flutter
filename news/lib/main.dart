@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news/views/bottom_nav/bottom_nav.dart';
 import 'package:news/views/screens/home_screen.dart';
 
 void main() {
@@ -13,7 +12,7 @@ class NewsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNav(),
+      home: HomeScreen(),
     );
   }
 }
