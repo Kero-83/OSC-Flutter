@@ -10,8 +10,9 @@ class BodyDesign extends StatelessWidget {
     return Column(
       children: <Widget>[
         ElevatedButton(
-          style: ButtonStyle(
+          style: const ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(Colors.transparent),
+            elevation: MaterialStatePropertyAll(0),
           ),
           onPressed: () {
             Navigator.push(
