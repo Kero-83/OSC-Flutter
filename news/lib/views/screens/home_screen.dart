@@ -35,9 +35,9 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.black,
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(3.5.sp, 0, 0, 0),
-                  height: 20.sp,
-                  width: 20.sp,
+                  margin: EdgeInsets.fromLTRB(3.5, 0, 0, 0),
+                  height: 20,
+                  width: 20,
                   decoration: BoxDecoration(
                     color: Colors.black,
                     shape: BoxShape.circle,
