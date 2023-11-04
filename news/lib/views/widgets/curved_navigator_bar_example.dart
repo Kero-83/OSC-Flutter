@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:news/views/screens/home_screen.dart';
 
 class CurvedNavigationBarExample extends StatefulWidget {
   @override
@@ -12,9 +13,10 @@ class _CurvedNavigationBarExampleState
   int _selectedPage = 0;
 
   final List<Widget> _pageOptions = [
-    Center(child: Text('Page 1')),
-    Center(child: Text('Page 2')),
-    Center(child: Text('Page 3')),
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
   ];
 
   @override
@@ -30,6 +32,7 @@ class _CurvedNavigationBarExampleState
         items: <Widget>[
           Icon(Icons.home, size: 30),
           Icon(Icons.search, size: 30),
+          Icon(Icons.favorite, size: 30),
           Icon(Icons.person, size: 30),
         ],
         color: Colors.blue,
