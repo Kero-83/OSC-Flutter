@@ -20,10 +20,10 @@ class NewsElement extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
             color: Colors.red), // Change the color to your desired color
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -42,19 +42,19 @@ class NewsElement extends StatelessWidget {
               // crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.search,
                   color: Colors.black,
                 ),
-                Icon(
+                const Icon(
                   Icons.notifications_none,
                   color: Colors.black,
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(3.5, 0, 0, 0),
+                  margin: const EdgeInsets.fromLTRB(3.5, 0, 0, 0),
                   height: 20,
                   width: 20,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.black,
                     shape: BoxShape.circle,
                   ),
@@ -74,7 +74,7 @@ class NewsElement extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -84,7 +84,7 @@ class NewsElement extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   content,
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
               ),
             ],

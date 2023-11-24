@@ -1,11 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:news/views/widgets/body_design.dart';
-import 'package:news/views/widgets/news_card.dart';
-import 'package:news/views/widgets/news_element.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:news/widgets/body_design.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -94,10 +90,18 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         body: TabBarView(
           children: [
-            BodyDesign(),
-            BodyDesign(),
-            BodyDesign(),
-            BodyDesign(),
+            BodyDesign(
+              category: 'Sports',
+            ),
+            BodyDesign(
+              category: 'Health',
+            ),
+            BodyDesign(
+              category: 'Science',
+            ),
+            BodyDesign(
+              category: 'Tech',
+            ),
           ],
         ),
       ),

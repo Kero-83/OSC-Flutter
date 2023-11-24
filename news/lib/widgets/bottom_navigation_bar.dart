@@ -1,23 +1,14 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
-import 'package:news/views/screens/account_screen.dart';
-import 'package:news/views/screens/favourite_screen.dart';
-import 'package:news/views/screens/home_screen.dart';
-import 'package:news/views/screens/search_screen.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BottomNavigationBarExample(),
-    );
-  }
-}
+import 'package:news/views/account_screen.dart';
+import 'package:news/views/favourite_screen.dart';
+import 'package:news/views/home_screen.dart';
+import 'package:news/views/search_screen.dart';
 
 class BottomNavigationBarExample extends StatefulWidget {
+  const BottomNavigationBarExample({super.key});
+
   @override
   _BottomNavigationBarExampleState createState() =>
       _BottomNavigationBarExampleState();
@@ -30,9 +21,9 @@ class _BottomNavigationBarExampleState
   // Define your individual pages or screens here
   final List<Widget> _pages = [
     HomeScreen(),
-    SearchScrean(),
-    FavouriteScreen(),
-    AccountScreen(),
+    const SearchScrean(),
+    const FavouriteScreen(),
+    const AccountScreen(),
   ];
 
   @override
@@ -46,24 +37,33 @@ class _BottomNavigationBarExampleState
             _currentIndex = index;
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: Colors.black,
+              size: 30,
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search, size: 30),
+            icon: Icon(
+              Icons.search,
+              size: 30,
+            ),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite, size: 30),
+            icon: Icon(
+              Icons.favorite,
+              size: 30,
+            ),
             label: 'Favourite',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, size: 30),
+            icon: Icon(
+              Icons.person,
+              size: 30,
+            ),
             label: 'Account',
           ),
         ],
