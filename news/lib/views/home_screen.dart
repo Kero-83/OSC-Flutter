@@ -28,14 +28,14 @@ class HomeScreen extends StatelessWidget {
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.search,
-                    color: Colors.black,
-                  ),
-                  Icon(
-                    Icons.notifications_none,
-                    color: Colors.black,
-                  ),
+                  // Icon(
+                  //   Icons.search,
+                  //   color: Colors.black,
+                  // ),
+                  // Icon(
+                  //   Icons.notifications_none,
+                  //   color: Colors.black,
+                  // ),
                   Container(
                     margin: EdgeInsets.fromLTRB(3.5, 0, 0, 0),
                     height: 20,

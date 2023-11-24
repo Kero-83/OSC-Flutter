@@ -42,14 +42,14 @@ class NewsElement extends StatelessWidget {
               // crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
-                  Icons.search,
-                  color: Colors.black,
-                ),
-                const Icon(
-                  Icons.notifications_none,
-                  color: Colors.black,
-                ),
+                // const Icon(
+                //   Icons.search,
+                //   color: Colors.black,
+                // ),
+                // const Icon(
+                //   Icons.notifications_none,
+                //   color: Colors.black,
+                // ),
                 Container(
                   margin: const EdgeInsets.fromLTRB(3.5, 0, 0, 0),
                   height: 20,
@@ -57,6 +57,9 @@ class NewsElement extends StatelessWidget {
                   decoration: const BoxDecoration(
                     color: Colors.black,
                     shape: BoxShape.circle,
+                  ),
+                  child: Image.network(
+                    'https://avatars.githubusercontent.com/u/110491713?v=4',
                   ),
                 ),
               ],
